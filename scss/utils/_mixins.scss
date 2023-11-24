@@ -1,0 +1,19 @@
+@mixin flex($horizontal-align: initial, $vertical-align: initial, $wrap: wrap, $gap: initial, $direction: initial) {
+    display: flex;
+    align-items: $vertical-align;
+    justify-content: $horizontal-align;
+    flex-wrap: $wrap;
+    gap: $gap;
+    flex-direction: $direction;
+}
+
+@mixin grid($columns, $column-width: 1fr, $gap: 0) {
+    display: grid;
+    grid-template-columns: repeat($columns, $column-width);
+    gap: $gap;
+}
+
+@mixin center() {
+    display: grid;
+    place-content: center;
+}

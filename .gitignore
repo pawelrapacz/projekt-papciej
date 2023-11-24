@@ -1,0 +1,12 @@
+# Folders
+.vscode/
+.old/
+public/
+**/test/
+**/tests/
+**/task/
+**/tasks/
+
+# Files
+**/test.*
+**/dev.*
