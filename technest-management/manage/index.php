@@ -1,7 +1,7 @@
 <?php
     session_start();
-
-    if (!isset($_SESSION['loginStatus']) || !$_SESSION['loginStatus'])
+    
+    if (session_status() == PHP_SESSION_NONE || !isset($_SESSION['loginStatus']) || !$_SESSION['loginStatus'])
     {
         header('Location: /technest-management/login/');
         exit;        
@@ -13,7 +13,6 @@
     <?php
         require_once $_SERVER['DOCUMENT_ROOT'].'/technest-management/common/head.html';
     ?>
-    <title>TechNest | Panel zarządzania</title>
 </head>
 <body>
     <?php
@@ -25,6 +24,8 @@
         <main>
         </main>
         <?php
+            if (isset($_GET['tableName']))
+                echo $_GET['tableName'];
             require_once $_SERVER['DOCUMENT_ROOT'].'/technest-management/common/footer.html';
         ?>
     </div>

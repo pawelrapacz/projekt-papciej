@@ -1,0 +1,48 @@
+@use '../../utils';
+
+.login-wrapper {
+    @include utils.center();
+    height: 100vh;
+    background: linear-gradient(125deg, rgba(9,9,121,1) 1%, rgba(8,38,139,1) 26%, rgba(0,212,255,1) 61%);
+}
+
+.login-box {
+    width: 25rem;
+    border-radius: 1rem;
+
+    .title {
+        font-family: 'Pixelify Sans', sans-serif;
+        font-weight: 500;
+        font-size: 5rem;
+        text-align: center;
+        margin-bottom: 4rem;
+        color: white;
+    }
+
+    form {
+        @include utils.flex($direction: column);
+    }
+
+    .input {
+        background-color: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(3px);
+        color: white;
+        font-size: 1.2rem;
+
+        &:first-child {
+            margin-bottom: 2rem;
+        }
+    }
+    
+    .submit-btn {
+        font-size: 1.2rem;
+        margin-top: 2rem;
+    }
+}
+
+.login-error {
+    // outline: .1rem solid red;
+    color: red;
+    font-size: 1.1rem;
+    margin-top: .5rem;
+}

@@ -1,5 +1,6 @@
-@use 'base';
-@use 'components';
+@use 'base' as CommonBase;
+@use 'components' as CommonComponents;
+@use 'management/base';
 @use 'management/components';
 @use 'management/layout';
-@use 'management/pages/';
+@use 'management/pages';
