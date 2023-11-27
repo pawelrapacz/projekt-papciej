@@ -1,0 +1,135 @@
+@use '../../utils';
+
+$clr-row-border: #8a8a8a;
+$row-border-width: 1px;
+
+.table {
+    width: 100%;
+    font-size: .9rem;
+    text-align: left;
+
+    td, th {
+        padding: .7rem 1rem;
+    }   
+
+    .expandable {
+        max-width: 15ch;
+        word-break: break-all;
+        
+        button {
+            opacity: 60%;
+        }
+    }
+
+    td:has(.el-modify-btn) > div {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    input[type='checkbox'] {
+        width: 1rem;
+        margin: 0;
+    }
+
+    td:has(input[type='checkbox']),
+    th:has(input[type='checkbox']) {
+        width: 1rem;
+    }
+}
+
+$table-header-height: 2rem;
+
+.table-header,
+th.table-header {
+    padding-bottom: 1rem;
+    // height: $table-header-height;
+
+    div {
+        height: 100%;
+    }
+}
+
+.table-title {
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+    font-size: 1.6rem;
+    font-weight: normal;
+
+    svg {
+        min-width: $table-header-height;
+        min-height: $table-header-height;
+    }
+}
+
+.table-options {
+    display: flex;
+    justify-content: flex-end;
+    gap: 3rem;
+
+    button {
+        padding-block: 0.7rem;
+        padding-inline: 1.5rem;
+        border-radius: 0.5rem;
+        transition: 250ms background-color linear;
+        overflow: hidden;
+        cursor: pointer;
+
+        &:hover {
+            background-color: white;
+        }
+    }
+}
+
+.table-fields {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 10;
+    
+    &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: $row-border-width;
+        background-color: $clr-row-border;
+        bottom: 0;
+        left: 0;
+    }
+}
+
+.table-row {
+    border-bottom: $row-border-width solid $clr-row-border;
+    transition: 200ms background-color linear;
+    min-width: fit-content;
+
+    &:hover{
+        background-color: rgb(219, 219, 219);
+    }
+
+    &:last-of-type {
+        border: none;
+    }
+}
+
+.el-modify-btn {
+    display: inline-block;
+
+    filter: opacity(60%);
+    transition: 200ms filter linear;
+
+    &:hover {
+        filter: opacity(90%);
+    }
+
+    svg{
+        height: 1.1rem;
+    }
+}
+
+.no-records {
+    text-align: center;
+    padding: 1rem;
+    font-weight: normal;
+}
