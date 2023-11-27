@@ -1,4 +1,4 @@
-class BaseConfirm
+export class BaseConfirm
 {
     constructor(text, answ1, answ2, callback) {
         this.callback = callback;
@@ -51,7 +51,7 @@ class BaseConfirm
 
 
 
-class ConfirmToPHP extends BaseConfirm
+export class ConfirmToPHP extends BaseConfirm
 {
     constructor(text, answ1, answ2, method, action) {
         super(text, answ1, answ2);
@@ -67,7 +67,7 @@ class ConfirmToPHP extends BaseConfirm
         if (!value)
         {
             this.backdrop.remove();
-            throw 'Error [confirm_to_php.addSendToPHPValue()] no input value provided'; 
+            throw 'Error [ConfirmToPHP.addSendToPHPValue()] no input value provided'; 
         }
 
         const input = this.form.insertBefore(document.createElement('input'), this.btnWrapper);
@@ -79,8 +79,8 @@ class ConfirmToPHP extends BaseConfirm
         input.setAttribute('value', value);
     }
 
-    requestType(type) {
-        this.addSendToPHPValue('__request_type', type);
+    setRequestType(type) {
+        this.addSendToPHPValue('requestType', type);
     }
 
     yes()

@@ -1,4 +1,4 @@
-class BaseDialog {
+export class BaseDialog {
     constructor(text, answ1, answ2, callback) {
         this.inputs = [];
         this.callback = callback;
@@ -89,7 +89,7 @@ class BaseDialog {
 
 
 
-class DialogToPHP extends BaseDialog
+export class DialogToPHP extends BaseDialog
 {
     constructor(text, answ1, answ2, method, action) {
         super(text, answ1, answ2);
@@ -102,7 +102,7 @@ class DialogToPHP extends BaseDialog
         if (!value)
         {
             this.backdrop.remove();
-            throw 'Error [confirm_to_php.addSendToPHPValue()] no input value provided'; 
+            throw 'Error [DialogToPHP.addSendToPHPValue()] no input value provided'; 
         }
 
         const input = this.form.insertBefore(document.createElement('input'), this.btnWrapper);
@@ -114,8 +114,8 @@ class DialogToPHP extends BaseDialog
         input.setAttribute('value', value);
     }
 
-    requestType(type) {
-        this.addSendToPHPValue('__request_type', type);
+    setRequestType(type) {
+        this.addSendToPHPValue('requestType', type);
     }
 
     yes() {
