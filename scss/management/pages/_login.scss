@@ -3,45 +3,80 @@
 .login-wrapper {
     @include utils.center();
     height: 100vh;
-    background: linear-gradient(125deg, rgba(9,9,121,1) 1%, rgba(8,38,139,1) 26%, rgba(0,212,255,1) 61%);
 }
 
+$bg-clr: var(--bg-dark);
+$text-clr: var(--text-clr-dark);
+
 .login-box {
-    width: 25rem;
-    border-radius: 1rem;
+    // light
+    --bg-light: hsla(0, 0%, 100%, 0.4);
+    --text-clr-light: black;
+
+    // dark
+    --bg-dark: hsla(0, 0%, 20%, 0.4);
+    --text-clr-dark: white;
+
+    width: 20vw;
+    border-radius: 2.5rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid $text-clr;
+    background-color: $bg-clr;
+    padding: 3rem;
 
     .title {
         font-family: 'Pixelify Sans', sans-serif;
         font-weight: 500;
-        font-size: 5rem;
+        font-size: 3vw;
         text-align: center;
-        margin-bottom: 4rem;
-        color: white;
+        margin-bottom: 2rem;
+        color: $text-clr;
     }
 
-    form {
-        @include utils.flex($direction: column);
-    }
-
-    .input {
-        background-color: rgba(255, 255, 255, 0.4);
-        backdrop-filter: blur(3px);
-        color: white;
-        font-size: 1.2rem;
-
-        &:first-child {
-            margin-bottom: 2rem;
+    .login-btn {
+        width: 100%;
+        padding-block: 1vw;
+        padding-inline: 2rem;
+        border-radius: 50rem;
+        background-color: #003580;
+        border: 1px solid #003580;
+        font-size: 1.1rem;
+        color: $text-clr;
+        margin-top: 1vw;
+        
+        &:hover {
+            background-color: #0045a5;
+            border-color: #0045a5;
         }
     }
+}
+
+.input-box {
+    @include utils.flex($wrap: nowrap, $gap: .7vw);
+    padding-block: .7vw;
+    padding-inline: 1.5rem;
+    border-radius: 50rem;
+    background-color: transparent;
+    border: 1px solid $text-clr;
+    margin-bottom: 1vw;
     
-    .submit-btn {
-        font-size: 1.2rem;
-        margin-top: 2rem;
+    input {
+        background-color: transparent;
+        border: none;
+        color: $text-clr;
+        font-size: 1rem;
+
+        &:focus-visible {
+            outline: none;
+        }
+    }
+
+    svg {
+        fill: $text-clr;
     }
 }
 
 .login-error {
-    // outline: .1rem solid red;
     color: red;
     font-size: 1.1rem;
     margin-top: .5rem;

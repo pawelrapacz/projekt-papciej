@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500&display=swap');
 
+body {
+    --bg-light: url('/img/view/management-light.svg');
+    --bg-dark: url('/img/view/management-dark.svg');
+
+    background-image: var(--bg-dark);
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-position: center bottom;
+    background-size: 100% auto;
+}
+
 .input {
     outline: none;
     box-sizing: border-box;

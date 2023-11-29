@@ -3,10 +3,7 @@
 $transiton-duration: 250ms;
 $sidebar-transiton-duration: 500ms;
 
-$clr-sidebar: hsla(0, 0%, 100%, 0.3);
-$clr-sidebar-ctrl: hsla(0, 0%, 100%, 0.5);
-
-$sidebar-width-collapsed: 6rem;
+$sidebar-width-collapsed: 5rem;
 $sidebar-width-expanded: 20rem;
 $sidebar-section-padding: 1rem;
 
@@ -15,26 +12,36 @@ $button-padding-block: .7rem;
 $button-border-radius: .5rem;
 
 
-body {
-    background-image: url('/img/view/wallpaper.jpg');
-    background-repeat: repeat;
-    background-attachment: fixed;
-    background-clip: border-box;
-    background-size: cover;
-}
+$bg-sidebar: var(--bg-dark);
+$text-clr: var(--text-clr-dark);
+$btn-hov-clr: var(--btn-hov-clr-dark);
 
-/* Sidebar 
-    min-width: 20rem
-    max-width: 30rem
-*/
+// Sidebar 
+//    min-width: 20rem
+//    max-width: 30rem
 
 .sidebar {
+    // light
+    --bg-light: hsla(0, 0%, 100%, 0.4);
+    --text-clr-light: black;
+    --btn-hov-clr-light: white;
+
+    // dark
+    --bg-dark: hsla(0, 0%, 20%, 0.4);
+    --text-clr-dark: white;
+    --btn-hov-clr-dark: hsla(0, 0%, 0%, 0.6);
+
     width: $sidebar-width-collapsed;
     height: 100vh;
     position: fixed;
-    background-color: $clr-sidebar;
+    color: $text-clr;
+    background-color: $bg-sidebar;
     backdrop-filter: blur(10px);
     transition: $sidebar-transiton-duration linear;
+
+    svg {
+        fill: $text-clr;
+    }
 }
 
 
@@ -64,7 +71,7 @@ $sidebar-btn-wrapper-height: (($sidebar-width-collapsed - $burger-el-height * 7)
     > div {
         width: 100%;
         height: $burger-el-height;
-        background-color: black;
+        background-color: $text-clr;
         border-radius: 5rem;
         transition: $sidebar-transiton-duration linear;
     }
@@ -91,9 +98,9 @@ $sidebar-btn-wrapper-height: (($sidebar-width-collapsed - $burger-el-height * 7)
     flex-direction: column;
     overflow-y: scroll;
 
-    -ms-overflow-style: none;  /* IE and Edge */
+    -ms-overflow-style: none;  // IE and Edge
     scrollbar-width: none;
-    ::-webkit-scrollbar { display: none; }
+    &::-webkit-scrollbar { display: none; } // Chrome
 }
 
 .nav-section {
@@ -115,7 +122,7 @@ $sidebar-btn-wrapper-height: (($sidebar-width-collapsed - $burger-el-height * 7)
         transform: translateX(-50%);
         height: 1px;
         width: calc(100% - $sidebar-section-padding * 2);
-        background-color: black;
+        background-color: $text-clr;
     }
 
     &:nth-last-of-type(2)::after {
@@ -133,17 +140,17 @@ $sidebar-btn-wrapper-height: (($sidebar-width-collapsed - $burger-el-height * 7)
 $nav-link-width: ($sidebar-width-collapsed - $sidebar-section-padding * 2);
 .nav-link {
     @include utils.flex(flex-start, center, nowrap, 2rem);
+    color: $text-clr;
     text-decoration: none;
     padding-block: $button-padding-block;
     border-radius: $button-border-radius;
-    color: black;
     width: 100%;
     transition: $transiton-duration background-color linear;
     overflow: hidden;
     cursor: pointer;
     
     &:hover {
-        background-color: white;
+        background-color: $btn-hov-clr;
     }
     
     div {
@@ -157,7 +164,6 @@ $nav-link-width: ($sidebar-width-collapsed - $sidebar-section-padding * 2);
         height: $width;
         min-width: $width;
         width: $width;
-        fill: black;
     }
 }
 
@@ -202,7 +208,7 @@ $nav-link-width: ($sidebar-width-collapsed - $sidebar-section-padding * 2);
     .nav-link {
         min-width: $nav-link-width;
         width: $nav-link-width;
-        svg{
+        svg {
             margin: auto;
         }
     }
@@ -216,19 +222,19 @@ $nav-link-width: ($sidebar-width-collapsed - $sidebar-section-padding * 2);
         'image name name'
         'image job job';
     gap: .5rem;
-
+    
     .image {
         height: 2.5rem;
         width: 2.5rem;
         grid-area: image;
         margin: auto;
     }
-
+    
     .name {
         font-weight: bold;
         grid-area: name;
     }
-
+    
     .job {
         font-size: .9rem;
         grid-area: job;
