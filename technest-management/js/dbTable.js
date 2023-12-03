@@ -87,8 +87,8 @@ createNewBtn.addEventListener('click', () => {
     newItemForm.setRequestType(CREATE_NEW);
     newItemForm.addSendToPHPValue('table', TABLE_NAME);
 
-    for (const FIELD of TABLE_FIELDS)
-        newItemForm.addInput('text', FIELD, FIELD);
+    for (let i = 0; i < TABLE_FIELDS.length; i++)
+        if (i !== 0) newItemForm.addInput('text', TABLE_FIELDS[i], TABLE_FIELDS[i]);
 });
 
 
