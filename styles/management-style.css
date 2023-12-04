@@ -650,7 +650,7 @@ th.table-header div {
   font-weight: normal;
 }
 .table-title svg {
-  fill: var(--txt-clr) !important;
+  fill: var(--txt-clr);
   min-width: 2rem;
   min-height: 2rem;
 }
@@ -661,16 +661,15 @@ th.table-header div {
   gap: 3rem;
 }
 .table-options button {
-  color: var(--txt-clr);
   padding-block: 0.7rem;
   padding-inline: 1.5rem;
   border-radius: 0.5rem;
-  transition: 250ms background-color linear;
-  overflow: hidden;
-  cursor: pointer;
+  background-color: var(--bg-solid-sec);
+  transition: 200ms all linear;
 }
-.table-options button:hover {
-  background-color: white;
+.table-options button:hover, .table-options button:focus {
+  color: white;
+  background-color: rgb(0, 105, 153);
 }
 
 .table-fields {

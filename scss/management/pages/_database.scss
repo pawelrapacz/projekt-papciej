@@ -60,7 +60,7 @@ th.table-header {
     font-weight: normal;
 
     svg {
-        fill: variables.$txt-clr !important;
+        fill: variables.$txt-clr;
         min-width: 2rem;
         min-height: 2rem;
     }
@@ -72,16 +72,15 @@ th.table-header {
     gap: 3rem;
 
     button {
-        color: variables.$txt-clr;
         padding-block: 0.7rem;
         padding-inline: 1.5rem;
-        border-radius: 0.5rem;
-        transition: 250ms background-color linear;
-        overflow: hidden;
-        cursor: pointer;
-
-        &:hover {
-            background-color: white;
+        border-radius: .5rem;
+        background-color: variables.$bg-solid-sec;
+        transition: 200ms all linear;
+        
+        &:hover, &:focus {
+            color: white;
+            background-color: variables.$lightblue;
         }
     }
 }
