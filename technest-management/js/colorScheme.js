@@ -7,18 +7,22 @@ colorSchemeApply();
 
 function colorSchemeApply()
 {
-    if (localStorage.getItem('colorScheme') === LIGHT) {
+    const prefered = window.matchMedia('(prefers-color-scheme: dark)');
+    prefered.removeEventListener('change', autoColorScheme);
+
+    if (localStorage.getItem('colorScheme') == LIGHT) {
         setToLight();
+        return;
     }
-    else if (localStorage.getItem('colorScheme') === DARK) {
+    else if (localStorage.getItem('colorScheme') == DARK) {
         setToDark();
+        return;
     }
-    else {
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) setToDark();
-        localStorage.setItem('colorScheme', AUTO);
-    
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', toggleColorScheme);
-    }
+
+    autoColorScheme();
+    localStorage.setItem('colorScheme', AUTO);
+
+    prefered.addEventListener('change', autoColorScheme);
 }
 
 function setToDark()
@@ -31,7 +35,8 @@ function setToLight()
     document.documentElement.classList.remove('dark');
 }
 
-function toggleColorScheme()
+function autoColorScheme()
 {
-    document.documentElement.classList.toggle('dark');
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) setToDark();
+    else setToLight();
 }
