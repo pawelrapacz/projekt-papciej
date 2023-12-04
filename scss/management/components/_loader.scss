@@ -19,7 +19,7 @@
         height: 3rem;
         border: transparent;
         border-style:outset;
-        border-top: .4rem solid rgb(0, 105, 153);
+        border-top: .4rem solid variables.$lightblue;
         border-radius: 100%;
         animation: loading 1s cubic-bezier(.75,.3,.22,.74) infinite;
     }

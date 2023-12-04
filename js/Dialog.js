@@ -37,8 +37,11 @@ export class BaseDialog {
         this.box.focus();
     }
 
-    addInput(type, id, placeholder, defaultValue) {
-        const input = this.form.insertBefore(document.createElement('input'), this.btnWrapper);
+    addInput(type, id, name, defaultValue) {
+        const label = this.form.insertBefore(document.createElement('label'), this.btnWrapper);
+        label.appendChild(document.createTextNode(name));
+        label.appendChild(document.createElement('br'));
+        const input = label.appendChild(document.createElement('input'));
         this.inputs.push(input);
         
         input.classList.add('std-input');
@@ -46,21 +49,24 @@ export class BaseDialog {
         input.setAttribute('type', type);
         input.setAttribute('id', id);
         input.setAttribute('name', id);
-        input.setAttribute('placeholder', placeholder);
+        // input.setAttribute('placeholder', name);
         
         if (defaultValue)
             input.value = defaultValue;
     }
 
-    addTextArea(id, placeholder, defaultValue) {
-        const textarea = this.form.insertBefore(document.createElement('textarea'), this.btnWrapper);
+    addTextArea(id, name, defaultValue) {
+        const label = this.form.insertBefore(document.createElement('label'), this.btnWrapper);
+        label.appendChild(document.createTextNode(name));
+        label.appendChild(document.createElement('br'));
+        const textarea = label.appendChild(document.createElement('textarea'));
         this.inputs.push(textarea);
         
         textarea.classList.add('std-textarea');
         textarea.classList.add('base_dialog_textarea');
         textarea.setAttribute('id', id);
         textarea.setAttribute('name', id);
-        textarea.setAttribute('placeholder', placeholder);
+        // textarea.setAttribute('placeholder', name);
 
         if (defaultValue)
             textarea.value = defaultValue;
