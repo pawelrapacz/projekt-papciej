@@ -59,10 +59,28 @@ button {
   font-size: 1rem;
 }
 
+:root {
+  color-scheme: light;
+  --bg-img: url("/img/view/management-light.svg");
+  --bg-solid: rgb(255, 255, 255);
+  --bg-solid-sec: rgb(230, 230, 230);
+  --bg-trans: hsla(0, 0%, 100%, 0.4);
+  --txt-clr: rgb(0, 0, 0);
+  --sidebar-btn-hov-clr: white;
+}
+
+.dark {
+  color-scheme: dark;
+  --bg-img: url("/img/view/management-dark.svg");
+  --bg-solid: rgb(30, 30, 30);
+  --bg-solid-sec: rgb(50, 50, 50);
+  --bg-trans: hsla(0, 0%, 20%, 0.4);
+  --txt-clr: rgb(255, 255, 255);
+  --sidebar-btn-hov-clr: hsla(0, 0%, 0%, 0.6);
+}
+
 body {
-  --bg-light: url("/img/view/management-light.svg");
-  --bg-dark: url("/img/view/management-dark.svg");
-  background-image: var(--bg-dark);
+  background-image: var(--bg-img);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center bottom;
@@ -102,22 +120,16 @@ body {
 }
 
 .sidebar {
-  --bg-light: hsla(0, 0%, 100%, 0.4);
-  --text-clr-light: black;
-  --btn-hov-clr-light: white;
-  --bg-dark: hsla(0, 0%, 20%, 0.4);
-  --text-clr-dark: white;
-  --btn-hov-clr-dark: hsla(0, 0%, 0%, 0.6);
   width: 5rem;
   height: 100vh;
   position: fixed;
-  color: var(--text-clr-dark);
-  background-color: var(--bg-dark);
+  color: var(--txt-clr);
+  background-color: var(--bg-trans);
   backdrop-filter: blur(10px);
   transition: 500ms linear;
 }
 .sidebar svg {
-  fill: var(--text-clr-dark);
+  fill: var(--txt-clr);
 }
 
 .sidebar-btn-wrapper {
@@ -143,7 +155,7 @@ body {
 .sidebar-btn > div {
   width: 100%;
   height: 0.25rem;
-  background-color: var(--text-clr-dark);
+  background-color: var(--txt-clr);
   border-radius: 5rem;
   transition: 500ms linear;
 }
@@ -186,7 +198,7 @@ body {
   transform: translateX(-50%);
   height: 1px;
   width: calc(100% - 2rem);
-  background-color: var(--text-clr-dark);
+  background-color: var(--txt-clr);
 }
 .nav-section:nth-last-of-type(2)::after {
   display: none;
@@ -210,7 +222,7 @@ body {
   flex-wrap: nowrap;
   gap: 2rem;
   flex-direction: initial;
-  color: var(--text-clr-dark);
+  color: var(--txt-clr);
   text-decoration: none;
   padding-block: 0.7rem;
   border-radius: 0.5rem;
@@ -220,7 +232,7 @@ body {
   cursor: pointer;
 }
 .nav-link:hover {
-  background-color: var(--btn-hov-clr-dark);
+  background-color: var(--sidebar-btn-hov-clr);
 }
 .nav-link div {
   min-width: max-content;
@@ -310,7 +322,7 @@ body {
 .content-box {
   border-collapse: collapse;
   border-radius: 0.5rem;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--bg-solid);
   backdrop-filter: blur(10px);
   padding: 2rem;
 }
@@ -337,7 +349,7 @@ body {
   height: 8rem;
   border-radius: 0.5rem;
   border: 1px solid #aaa;
-  background-color: white;
+  background-color: var(--bg-solid);
 }
 .confirm p {
   margin: 0;
@@ -371,15 +383,11 @@ body {
 }
 
 .login-box {
-  --bg-light: hsla(0, 0%, 100%, 0.4);
-  --text-clr-light: black;
-  --bg-dark: hsla(0, 0%, 20%, 0.4);
-  --text-clr-dark: white;
   width: 20vw;
   border-radius: 2.5rem;
   backdrop-filter: blur(10px);
-  border: 1px solid var(--text-clr-dark);
-  background-color: var(--bg-dark);
+  border: 1px solid var(--txt-clr);
+  background-color: var(--bg-trans);
   padding: 3rem;
 }
 .login-box .title {
@@ -388,7 +396,7 @@ body {
   font-size: 3vw;
   text-align: center;
   margin-bottom: 2rem;
-  color: var(--text-clr-dark);
+  color: var(--txt-clr);
 }
 .login-box .login-btn {
   width: 100%;
@@ -398,7 +406,7 @@ body {
   background-color: #003580;
   border: 1px solid #003580;
   font-size: 1.1rem;
-  color: var(--text-clr-dark);
+  color: rgb(255, 255, 255);
   margin-top: 1vw;
 }
 .login-box .login-btn:hover {
@@ -417,20 +425,20 @@ body {
   padding-inline: 1.5rem;
   border-radius: 50rem;
   background-color: transparent;
-  border: 1px solid var(--text-clr-dark);
+  border: 1px solid var(--txt-clr);
   margin-bottom: 1vw;
 }
 .input-box input {
   background-color: transparent;
   border: none;
-  color: var(--text-clr-dark);
+  color: var(--txt-clr);
   font-size: 1rem;
 }
 .input-box input:focus-visible {
   outline: none;
 }
 .input-box svg {
-  fill: var(--text-clr-dark);
+  fill: var(--txt-clr);
 }
 
 .login-error {
@@ -452,10 +460,10 @@ body {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto repeat(2, 2fr);
   gap: 1.5rem;
-  color: white;
+  color: var(--txt-clr);
 }
 .dashboard section {
-  background-color: rgb(20, 20, 20);
+  background-color: var(--bg-solid);
   padding: 2rem;
   border-radius: 1rem;
 }
@@ -500,7 +508,7 @@ body {
   gap: 1rem;
 }
 .raport div {
-  background-color: #212121;
+  background-color: var(--bg-solid-sec);
   border-radius: 1rem;
   padding-block: 1rem;
   padding-inline-start: 1rem;
@@ -554,9 +562,9 @@ body {
 }
 
 .message {
-  color: white;
+  color: var(--txt-clr);
   text-decoration: none;
-  background-color: #212121;
+  background-color: var(--bg-solid-sec);
   border-radius: 1rem;
   padding-block: 0.5rem;
   padding-inline-start: 1rem;
@@ -598,7 +606,11 @@ body {
 }
 
 .table {
+  background-color: var(--bg-solid);
+  color: var(--txt-clr);
   width: 100%;
+  border-collapse: collapse;
+  border-radius: 0.5rem;
   font-size: 0.9rem;
   text-align: left;
 }
@@ -643,6 +655,7 @@ th.table-header div {
   font-weight: normal;
 }
 .table-title svg {
+  fill: var(--txt-clr) !important;
   min-width: 2rem;
   min-height: 2rem;
 }
@@ -653,6 +666,7 @@ th.table-header div {
   gap: 3rem;
 }
 .table-options button {
+  color: var(--txt-clr);
   padding-block: 0.7rem;
   padding-inline: 1.5rem;
   border-radius: 0.5rem;
@@ -667,7 +681,7 @@ th.table-header div {
 .table-fields {
   position: sticky;
   top: 0;
-  background-color: white;
+  background-color: var(--bg-solid);
   z-index: 10;
 }
 .table-fields::after {
@@ -686,7 +700,7 @@ th.table-header div {
   min-width: fit-content;
 }
 .table-row:hover {
-  background-color: rgb(219, 219, 219);
+  background-color: var(--bg-solid-sec);
 }
 .table-row:last-of-type {
   border: none;
@@ -701,6 +715,7 @@ th.table-header div {
   filter: opacity(90%);
 }
 .el-modify-btn svg {
+  fill: var(--txt-clr) !important;
   height: 1.1rem;
 }
 

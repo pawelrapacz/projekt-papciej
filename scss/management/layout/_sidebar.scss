@@ -1,4 +1,5 @@
 @use '../../utils';
+@use '../variables';
 
 $transiton-duration: 250ms;
 $sidebar-transiton-duration: 500ms;
@@ -11,36 +12,21 @@ $button-gap: .5rem;
 $button-padding-block: .7rem;
 $button-border-radius: .5rem;
 
-
-$bg-sidebar: var(--bg-dark);
-$text-clr: var(--text-clr-dark);
-$btn-hov-clr: var(--btn-hov-clr-dark);
-
 // Sidebar 
 //    min-width: 20rem
 //    max-width: 30rem
 
 .sidebar {
-    // light
-    --bg-light: hsla(0, 0%, 100%, 0.4);
-    --text-clr-light: black;
-    --btn-hov-clr-light: white;
-
-    // dark
-    --bg-dark: hsla(0, 0%, 20%, 0.4);
-    --text-clr-dark: white;
-    --btn-hov-clr-dark: hsla(0, 0%, 0%, 0.6);
-
     width: $sidebar-width-collapsed;
     height: 100vh;
     position: fixed;
-    color: $text-clr;
-    background-color: $bg-sidebar;
+    color: variables.$txt-clr;
+    background-color: variables.$bg-trans;
     backdrop-filter: blur(10px);
     transition: $sidebar-transiton-duration linear;
 
     svg {
-        fill: $text-clr;
+        fill: variables.$txt-clr;
     }
 }
 
@@ -71,7 +57,7 @@ $sidebar-btn-wrapper-height: (($sidebar-width-collapsed - $burger-el-height * 7)
     > div {
         width: 100%;
         height: $burger-el-height;
-        background-color: $text-clr;
+        background-color: variables.$txt-clr;
         border-radius: 5rem;
         transition: $sidebar-transiton-duration linear;
     }
@@ -122,7 +108,7 @@ $sidebar-btn-wrapper-height: (($sidebar-width-collapsed - $burger-el-height * 7)
         transform: translateX(-50%);
         height: 1px;
         width: calc(100% - $sidebar-section-padding * 2);
-        background-color: $text-clr;
+        background-color: variables.$txt-clr;
     }
 
     &:nth-last-of-type(2)::after {
@@ -140,7 +126,7 @@ $sidebar-btn-wrapper-height: (($sidebar-width-collapsed - $burger-el-height * 7)
 $nav-link-width: ($sidebar-width-collapsed - $sidebar-section-padding * 2);
 .nav-link {
     @include utils.flex(flex-start, center, nowrap, 2rem);
-    color: $text-clr;
+    color: variables.$txt-clr;
     text-decoration: none;
     padding-block: $button-padding-block;
     border-radius: $button-border-radius;
@@ -150,7 +136,7 @@ $nav-link-width: ($sidebar-width-collapsed - $sidebar-section-padding * 2);
     cursor: pointer;
     
     &:hover {
-        background-color: $btn-hov-clr;
+        background-color: variables.$sidebar-btn-hov-clr;
     }
     
     div {

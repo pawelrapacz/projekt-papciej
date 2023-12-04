@@ -1,27 +1,17 @@
 @use '../../utils';
+@use '../variables';
 
 .login-wrapper {
     @include utils.center();
     height: 100vh;
 }
 
-$bg-clr: var(--bg-dark);
-$text-clr: var(--text-clr-dark);
-
 .login-box {
-    // light
-    --bg-light: hsla(0, 0%, 100%, 0.4);
-    --text-clr-light: black;
-
-    // dark
-    --bg-dark: hsla(0, 0%, 20%, 0.4);
-    --text-clr-dark: white;
-
     width: 20vw;
     border-radius: 2.5rem;
     backdrop-filter: blur(10px);
-    border: 1px solid $text-clr;
-    background-color: $bg-clr;
+    border: 1px solid variables.$txt-clr;
+    background-color: variables.$bg-trans;
     padding: 3rem;
 
     .title {
@@ -30,7 +20,7 @@ $text-clr: var(--text-clr-dark);
         font-size: 3vw;
         text-align: center;
         margin-bottom: 2rem;
-        color: $text-clr;
+        color: variables.$txt-clr;
     }
 
     .login-btn {
@@ -41,7 +31,7 @@ $text-clr: var(--text-clr-dark);
         background-color: #003580;
         border: 1px solid #003580;
         font-size: 1.1rem;
-        color: $text-clr;
+        color: rgb(255, 255, 255);
         margin-top: 1vw;
         
         &:hover {
@@ -57,13 +47,13 @@ $text-clr: var(--text-clr-dark);
     padding-inline: 1.5rem;
     border-radius: 50rem;
     background-color: transparent;
-    border: 1px solid $text-clr;
+    border: 1px solid variables.$txt-clr;
     margin-bottom: 1vw;
     
     input {
         background-color: transparent;
         border: none;
-        color: $text-clr;
+        color: variables.$txt-clr;
         font-size: 1rem;
 
         &:focus-visible {
@@ -72,7 +62,7 @@ $text-clr: var(--text-clr-dark);
     }
 
     svg {
-        fill: $text-clr;
+        fill: variables.$txt-clr;
     }
 }
 

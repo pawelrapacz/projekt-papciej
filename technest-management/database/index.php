@@ -24,7 +24,7 @@
     ?>
     <div class="wrapper">
         <main>
-            <table class="table content-box">
+            <table class="table">
                 <?php
                     require_once $_SERVER['DOCUMENT_ROOT'].'/connect.php';
                     const TABLE = 0;

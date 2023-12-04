@@ -1,7 +1,5 @@
 @use '../../utils';
-
-$bg: rgb(20, 20, 20);
-$bg-sec: lighten($bg, 5%);
+@use '../variables';
 
 .wrapper:has(.dashboard) {
     box-sizing: border-box;
@@ -16,10 +14,10 @@ $bg-sec: lighten($bg, 5%);
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto repeat(2, 2fr);
     gap: 1.5rem;
-    color: white;
+    color: variables.$txt-clr;
 
     section {
-        background-color: $bg;
+        background-color: variables.$bg-solid;
         padding: 2rem;
         border-radius: 1rem;
     }
@@ -68,7 +66,7 @@ $bg-sec: lighten($bg, 5%);
     gap: 1rem;
 
     div {
-        background-color: $bg-sec;
+        background-color: variables.$bg-solid-sec;
         border-radius: 1rem;
         padding-block: 1rem;
         padding-inline-start: 1rem;
@@ -122,9 +120,9 @@ $bg-sec: lighten($bg, 5%);
 }
 
 .message {
-    color: white;
+    color: variables.$txt-clr;
     text-decoration: none;
-    background-color: lighten(rgb(20, 20, 20), 5%);
+    background-color: variables.$bg-solid-sec;
     border-radius: 1rem;
     padding-block: .5rem;
     padding-inline-start: 1rem;

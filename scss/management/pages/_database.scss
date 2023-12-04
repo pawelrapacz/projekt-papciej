@@ -1,10 +1,15 @@
 @use '../../utils';
+@use '../variables';
 
 $clr-row-border: #8a8a8a;
 $row-border-width: 1px;
 
 .table {
+    background-color: variables.$bg-solid;
+    color: variables.$txt-clr;
     width: 100%;
+    border-collapse: collapse;
+    border-radius: .5rem;
     font-size: .9rem;
     text-align: left;
 
@@ -38,12 +43,9 @@ $row-border-width: 1px;
     }
 }
 
-$table-header-height: 2rem;
-
 .table-header,
 th.table-header {
     padding-bottom: 1rem;
-    // height: $table-header-height;
 
     div {
         height: 100%;
@@ -58,8 +60,9 @@ th.table-header {
     font-weight: normal;
 
     svg {
-        min-width: $table-header-height;
-        min-height: $table-header-height;
+        fill: variables.$txt-clr !important;
+        min-width: 2rem;
+        min-height: 2rem;
     }
 }
 
@@ -69,6 +72,7 @@ th.table-header {
     gap: 3rem;
 
     button {
+        color: variables.$txt-clr;
         padding-block: 0.7rem;
         padding-inline: 1.5rem;
         border-radius: 0.5rem;
@@ -85,7 +89,7 @@ th.table-header {
 .table-fields {
     position: sticky;
     top: 0;
-    background-color: white;
+    background-color: variables.$bg-solid;
     z-index: 10;
     
     &::after {
@@ -105,7 +109,7 @@ th.table-header {
     min-width: fit-content;
 
     &:hover{
-        background-color: rgb(219, 219, 219);
+        background-color: variables.$bg-solid-sec;
     }
 
     &:last-of-type {
@@ -124,6 +128,7 @@ th.table-header {
     }
 
     svg{
+        fill: variables.$txt-clr !important;
         height: 1.1rem;
     }
 }

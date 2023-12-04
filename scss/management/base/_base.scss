@@ -1,10 +1,30 @@
+@use '../variables';
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500&display=swap');
 
-body {
-    --bg-light: url('/img/view/management-light.svg');
-    --bg-dark: url('/img/view/management-dark.svg');
+:root {
+    color-scheme: light;
 
-    background-image: var(--bg-dark);
+    --bg-img: url('/img/view/management-light.svg');
+    --bg-solid: rgb(255, 255, 255);
+    --bg-solid-sec: rgb(230, 230, 230);
+    --bg-trans: hsla(0, 0%, 100%, 0.4);
+    --txt-clr: rgb(0, 0, 0);
+    --sidebar-btn-hov-clr: white;
+}
+
+.dark {
+    color-scheme: dark;
+
+    --bg-img: url('/img/view/management-dark.svg');
+    --bg-solid: rgb(30, 30, 30);
+    --bg-solid-sec: rgb(50, 50, 50);
+    --bg-trans: hsla(0, 0%, 20%, 0.4);
+    --txt-clr: rgb(255, 255, 255);
+    --sidebar-btn-hov-clr: hsla(0, 0%, 0%, 0.6);
+}
+
+body {
+    background-image: variables.$bg-img;
     background-repeat: no-repeat;
     background-attachment:fixed;
     background-position: center bottom;
