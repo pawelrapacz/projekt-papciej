@@ -13,42 +13,6 @@ body {
   display: none;
 }
 
-.loader {
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 100vh;
-  width: 100%;
-  display: grid;
-  place-content: center;
-  background-color: #fff;
-  visibility: visible;
-  transition: 300ms opacity linear;
-  z-index: 3;
-}
-.loader::after {
-  content: "";
-  width: 3rem;
-  height: 3rem;
-  border: transparent;
-  border-style: outset;
-  border-top: 0.4rem solid rgb(21, 31, 54);
-  border-radius: 100%;
-  animation: loading 1s cubic-bezier(0.75, 0.3, 0.22, 0.74) infinite;
-}
-
-.loader-hidden {
-  opacity: 0;
-}
-
-@keyframes loading {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 button {
   border: none;
   padding: 0;
@@ -319,6 +283,42 @@ body {
   padding: 2rem;
 }
 
+.loader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  place-content: center;
+  background-color: var(--bg-solid);
+  visibility: visible;
+  transition: 300ms opacity linear;
+  z-index: 3;
+}
+.loader::after {
+  content: "";
+  width: 3rem;
+  height: 3rem;
+  border: transparent;
+  border-style: outset;
+  border-top: 0.4rem solid rgb(0, 105, 153);
+  border-radius: 100%;
+  animation: loading 1s cubic-bezier(0.75, 0.3, 0.22, 0.74) infinite;
+}
+
+.loader-hidden {
+  opacity: 0;
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 .content-box {
   border-collapse: collapse;
   border-radius: 0.5rem;
@@ -715,7 +715,7 @@ th.table-header div {
   filter: opacity(90%);
 }
 .el-modify-btn svg {
-  fill: var(--txt-clr) !important;
+  fill: var(--txt-clr);
   height: 1.1rem;
 }
 

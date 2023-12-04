@@ -2,14 +2,14 @@ const sidebar = document.querySelector('.sidebar');
 const sidebarBtn = document.querySelector('.sidebar-btn');
 const wrapper = document.querySelector('.wrapper');
 
+if (sidebar)
+{
 const SIDEBAR_COL_WIDTH = sidebar.style.width;
 const SIDEBAR_EX_WIDTH = 'clamp(20rem, 20vw, 25rem)';
 const COLLAPSED = 0;
 const EXPANDED = 1;
 
 if (localStorage.getItem('sidebarStatus') == EXPANDED) toggleSidebar();
-
-
 sidebarBtn.addEventListener('click', toggleSidebar);
 
 const submenus = document.querySelectorAll('.submenu');
@@ -66,4 +66,6 @@ function toggleSubmenu(el, event = undefined) {
         localStorage.setItem(el.storageName, EXPANDED);
     else
         localStorage.setItem(el.storageName, COLLAPSED);
+}
+
 }
