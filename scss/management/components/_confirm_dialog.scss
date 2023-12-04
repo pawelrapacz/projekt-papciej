@@ -43,7 +43,7 @@ $border-rad: .5rem;
         background-color: variables.$bg-solid-sec;
         transition: 200ms all linear;
         
-        &:hover, &:focus {
+        &:hover {
             color: white;
             background-color: variables.$lightblue;
         }
