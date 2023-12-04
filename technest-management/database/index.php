@@ -16,6 +16,7 @@
         if (isset($_GET['table']))
             echo '<script type="module" src="/technest-management/js/dbTable.js"></script>';
     ?>
+    <title>TechNest | Baza danych</title>
 </head>
 <body>
     <?php
