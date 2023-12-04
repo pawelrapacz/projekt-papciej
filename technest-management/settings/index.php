@@ -18,7 +18,7 @@
 </head>
 <body>
     <?php
-        require_once $_SERVER['DOCUMENT_ROOT'].'/common/loader.html';
+        require_once $_SERVER['DOCUMENT_ROOT'].'/technest-management/common/loader.html';
         require_once $_SERVER['DOCUMENT_ROOT'].'/technest-management/common/sidebar.php';
     ?>
 
