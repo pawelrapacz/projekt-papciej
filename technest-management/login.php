@@ -13,10 +13,10 @@
     // TODO: db connection and user autorization
     // TODO: SQL injection protection
 
-    $l = 'a';
-    $p = 'a';
+    const LOGIN = 'jankowalski';
+    const PASSWORD = 'qwerty';
 
-    if ($_POST['login'] == $l && $_POST['password'])
+    if ($_POST['login'] === LOGIN && $_POST['password'] === PASSWORD)
     {
         $_SESSION['loginStatus'] = true;
         header('Location: /technest-management/');
