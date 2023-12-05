@@ -28,7 +28,7 @@
         <section id="">
             <form action="add.php" method="POST">
                 <?php
-                    $query = "SELECT produkty.ProduktID, NazwaProduktu, Cena, Opis, NazwaKategorii, Producent, IloscWMagazynie, AVG(Ocena) FROM `Produkty`  
+                    $query = "SELECT Produkty.ProduktID, NazwaProduktu, Cena, Opis, NazwaKategorii, Producent, IloscWMagazynie, AVG(Ocena) FROM `Produkty`  
                     INNER JOIN Opinie ON Opinie.ProduktID=Produkty.ProduktID
                     INNER JOIN Kategorie ON Kategorie.KategoriaID=Produkty.KategoriaID GROUP BY Produkty.ProduktID;";
         
