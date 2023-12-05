@@ -1,0 +1,33 @@
+@use '../../utils';
+@use '../variables';
+
+.error-wrapper {
+    @include utils.center();
+    min-height: 100dvh;
+}
+
+.error {
+    width: clamp(15rem, 70dvw, 60rem);
+    @include utils.flex(space-between, center, nowrap, 2rem, column);
+    font-size: 1.1rem;
+
+    .exclamation {
+        $size: clamp(4rem, 5dvw, 7rem);
+        fill: red;
+        height: $size;
+        width: $size;
+    }
+
+    div {
+        width: 100%;
+    }
+}
+
+.error-code {
+    text-align: center;
+    font-size: clamp(1.5rem, 2dvw, 3rem);
+}
+
+.error-message {
+    opacity: 60%;
+}
