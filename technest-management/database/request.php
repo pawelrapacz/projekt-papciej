@@ -9,7 +9,11 @@
     if (
         !isset($_POST['requestType']) ||
         !isset($_POST['table'])
-    ) {/* error */}
+    ) {
+        $_SESSION['error'] = ERR_COMMON;
+        header('Location: /technest-management/error/');
+        exit;
+    }
 
     require_once $_SERVER['DOCUMENT_ROOT'].'/technest-management/error_codes.php';
     require_once $_SERVER['DOCUMENT_ROOT'].'/connect.php';
@@ -37,27 +41,62 @@
 
     if ($requestType === DELETE_CHECKED)
     {
-        if (!($amountToDelete = $_POST['amountToDelete'])) {/* error */}
+        if (!($amountToDelete = $_POST['amountToDelete'])) {
+            $_SESSION['error'] = ERR_COMMON;
+            header('Location: /technest-management/error/');
+            exit;
+        }
         
-        for ($i = 0; $i < $amountToDelete; $i++)
-        {
-            if (!($id = $_POST[$i])) {/* error */}
-            $db->query("DELETE FROM $table WHERE $idField = $id");
+        try {
+            for ($i = 0; $i < $amountToDelete; $i++)
+            {
+                if (!($id = $_POST[$i])) {
+                    $_SESSION['error'] = ERR_COMMON;
+                    header('Location: /technest-management/error/');
+                    exit;
+                }
+                $db->query("DELETE FROM $table WHERE $idField = $id");
+            }
+        }
+        catch (mysqli_sql_exception $e) {
+            $_SESSION['error'] = ERR_DB_REQUEST;
+            $_SESSION['errorMessage'] = $e->getMessage();
+            $_SESSION['errorCode'] = $e->getCode();
+    
+            header('Location: /technest-management/error/');
+            exit; 
         }
         goBackToPreviousPage();
     }
 
     if ($requestType === DELETE)
     {
-        if (!($id = $_POST['id'])) {/* error */}
-        $db->query("DELETE FROM $table WHERE $idField = $id");
+        if (!($id = $_POST['id'])) {
+            $_SESSION['error'] = ERR_COMMON;
+            header('Location: /technest-management/error/');
+            exit;
+        }
+
+        try { $db->query("DELETE FROM $table WHERE $idField = $id"); }
+        catch (mysqli_sql_exception $e) {
+            $_SESSION['error'] = ERR_DB_REQUEST;
+            $_SESSION['errorMessage'] = $e->getMessage();
+            $_SESSION['errorCode'] = $e->getCode();
+    
+            header('Location: /technest-management/error/');
+            exit; 
+        }
         goBackToPreviousPage();
     }
 
     if ($requestType === EDIT)
     {
-        echo 'dasdfas';
-        if (!($id = $_POST['id'])) {/* error */}
+        if (!($id = $_POST['id'])) {
+            $_SESSION['error'] = ERR_COMMON;
+            header('Location: /technest-management/error/');
+            exit;
+        }
+
         $tableFields = getTableFieldsNames($table);
         $tableFieldTypes = getTableFieldsTypes($table);
         $insertValues = Array();
@@ -86,7 +125,15 @@
         }
 
         $sql .= ' WHERE '.$idField.' = '.$id.';';
-        $db->query($sql);
+        try { $db->query($sql); }
+        catch (mysqli_sql_exception $e) {
+            $_SESSION['error'] = ERR_DB_REQUEST;
+            $_SESSION['errorMessage'] = $e->getMessage();
+            $_SESSION['errorCode'] = $e->getCode();
+    
+            header('Location: /technest-management/error/');
+            exit; 
+        }
         goBackToPreviousPage();
     }
 
@@ -103,8 +150,15 @@
             array_push( $insertValues, processDataForSqlUsage($_POST[$value], $tableFieldTypes[$key]) );
 
         $sql = 'INSERT INTO '.$table.' ('.implode(', ', $tableFields).') VALUES ('.implode(', ', $insertValues).')';
-        echo $sql;
-        $db->query($sql);
+        try { $db->query($sql); }
+        catch (mysqli_sql_exception $e) {
+            $_SESSION['error'] = ERR_DB_REQUEST;
+            $_SESSION['errorMessage'] = $e->getMessage();
+            $_SESSION['errorCode'] = $e->getCode();
+    
+            header('Location: /technest-management/error/');
+            exit; 
+        }
         goBackToPreviousPage();
     }
 
@@ -120,14 +174,30 @@
     function getTableIdFieldName(string $table)
     {
         global $db;
-        $result = $db->query('DESCRIBE '.$table);
+        try { $result = $db->query('DESCRIBE '.$table); }
+        catch (mysqli_sql_exception $e) {
+            $_SESSION['error'] = ERR_DB_QUERY;
+            $_SESSION['errorMessage'] = $e->getMessage();
+            $_SESSION['errorCode'] = $e->getCode();
+    
+            header('Location: /technest-management/error/');
+            exit; 
+        }
         return $result->fetch_row()[0];
     }
 
     function getTableFieldsNames(string $table)
     {
         global $db;
-        $result = $db->query('DESCRIBE '.$table);
+        try { $result = $db->query('DESCRIBE '.$table); }
+        catch (mysqli_sql_exception $e) {
+            $_SESSION['error'] = ERR_DB_QUERY;
+            $_SESSION['errorMessage'] = $e->getMessage();
+            $_SESSION['errorCode'] = $e->getCode();
+    
+            header('Location: /technest-management/error/');
+            exit; 
+        }
         $tabFields = Array();
 
         while ($row = $result->fetch_row())
@@ -139,7 +209,15 @@
     function getTableFieldsTypes(string $table)
     {
         global $db;
-        $result = $db->query('DESCRIBE '.$table);
+        try { $result = $db->query('DESCRIBE '.$table); }
+        catch (mysqli_sql_exception $e) {
+            $_SESSION['error'] = ERR_DB_QUERY;
+            $_SESSION['errorMessage'] = $e->getMessage();
+            $_SESSION['errorCode'] = $e->getCode();
+    
+            header('Location: /technest-management/error/');
+            exit; 
+        }
         $tabFields = Array();
 
         while ($row = $result->fetch_row())
