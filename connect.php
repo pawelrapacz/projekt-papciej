@@ -5,4 +5,6 @@
     const DB_USER = 'root';
     const DB_PASSWORD = 'root';
 
+    mysqli_report(MYSQLI_REPORT_STRICT);
+
 ?>

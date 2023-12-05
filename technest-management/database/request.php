@@ -11,7 +11,18 @@
         !isset($_POST['table'])
     ) {/* error */}
 
-    require $_SERVER['DOCUMENT_ROOT'].'/connect.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/technest-management/error_codes.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/connect.php';
+
+    try { $db = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME); }
+    catch (mysqli_sql_exception $e) {
+        $_SESSION['error'] = ERR_DB_CONNECT;
+        $_SESSION['errorMessage'] = $e->getMessage();
+        $_SESSION['errorCode'] = $e->getCode();
+
+        header('Location: /technest-management/error/');
+        exit; 
+    }
     
     // REQUEST TYPES
     const DELETE_CHECKED = 'DELETE_CHECKED';
@@ -19,8 +30,6 @@
     const EDIT = 'EDIT';
     const CREATE_NEW = 'CREATE_NEW';
 
-
-    $db = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
     
     $requestType = $_POST['requestType'];
     $table = $_POST['table'];

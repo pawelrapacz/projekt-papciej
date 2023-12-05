@@ -1,3 +1,17 @@
+<?php
+    require_once $_SERVER['DOCUMENT_ROOT'].'/technest-management/error_codes.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/connect.php';
+
+    try { $db = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME); }
+    catch (mysqli_sql_exception $e) {
+        $_SESSION['error'] = ERR_DB_CONNECT;
+        $_SESSION['errorMessage'] = $e->getMessage();
+        $_SESSION['errorCode'] = $e->getCode();
+
+        header('Location: /technest-management/error/');
+        exit; 
+    }
+?>
 <div class="sidebar">
     <div class="sidebar-btn-wrapper">
         <button class="sidebar-btn" title="Rozwiń">
@@ -76,12 +90,6 @@
                         <div>Baza danych</div>
                     </button>
                     <?php
-                        require_once $_SERVER['DOCUMENT_ROOT'].'/connect.php';
-
-                        // TODO: error handling
-
-                        $db = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
-
                         echo '
                         <div class="submenu">
                             <ul>
@@ -128,28 +136,6 @@
                         </div>
                         ';
                     ?>
-                    <!-- <div class="submenu">
-                        <ul class="a">
-                            <li>
-                                <form action="/technest-management/manage/" method="post">
-                                    <input type="text" class="none" value="ddd" readonly>
-                                    <button type="submit" class="nav-link" href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M4 21h15.893c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2zm0-2v-5h4v5H4zM14 7v5h-4V7h4zM8 7v5H4V7h4zm2 12v-5h4v5h-4zm6 0v-5h3.894v5H16zm3.893-7H16V7h3.893v5z"></path></svg>
-                                        <div>Tabela1</div>
-                                    </button>
-                                </form>
-                            </li>
-                            <li>
-                                <form action="/technest-management/manage/" method="post">
-                                    <input type="text" class="none" value="ddd" readonly>
-                                    <button type="submit" class="nav-link" href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 9a3.02 3.02 0 0 0-3 3c0 1.642 1.358 3 3 3 1.641 0 3-1.358 3-3 0-1.641-1.359-3-3-3z"></path><path d="M12 5c-7.633 0-9.927 6.617-9.948 6.684L1.946 12l.105.316C2.073 12.383 4.367 19 12 19s9.927-6.617 9.948-6.684l.106-.316-.105-.316C21.927 11.617 19.633 5 12 5zm0 12c-5.351 0-7.424-3.846-7.926-5C4.578 10.842 6.652 7 12 7c5.351 0 7.424 3.846 7.926 5-.504 1.158-2.578 5-7.926 5z"></path></svg>
-                                    <div>Widok1</div>
-                                    </button>
-                                </form>
-                            </li>
-                        </ul>
-                    </div> -->
                 </li>
             </ul>
         </section>
@@ -180,8 +166,6 @@
                     <span class="name">Jan Kowalski</span>
                     <span class="job">Administrator</span>
                 </div>
-    
-                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 12c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path></svg>  -->
     
                 <a class="nav-link" href="/technest-management/logout.php" title="Wyloguj się">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 13v-2H7V8l-5 4 5 4v-3z"></path><path d="M20 3h-9c-1.103 0-2 .897-2 2v4h2V5h9v14h-9v-4H9v4c0 1.103.897 2 2 2h9c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2z"></path></svg>

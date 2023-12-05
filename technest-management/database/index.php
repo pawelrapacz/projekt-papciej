@@ -6,6 +6,19 @@
         header('Location: /technest-management/login/');
         exit;        
     }
+
+    require_once $_SERVER['DOCUMENT_ROOT'].'/technest-management/error_codes.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/connect.php';
+
+    try { $db = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME); }
+    catch (mysqli_sql_exception $e) {
+        $_SESSION['error'] = ERR_DB_CONNECT;
+        $_SESSION['errorMessage'] = $e->getMessage();
+        $_SESSION['errorCode'] = $e->getCode();
+
+        header('Location: /technest-management/error/');
+        exit; 
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pl-PL">
@@ -27,12 +40,9 @@
         <main>
             <table class="table">
                 <?php
-                    require_once $_SERVER['DOCUMENT_ROOT'].'/connect.php';
                     const TABLE = 0;
                     const VIEW = 1;
- 
 
-                    $db =  new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 
                     //  RETURNS: false when table/view is empty, true otherwise
                     function displayHeader($name, $type) {
