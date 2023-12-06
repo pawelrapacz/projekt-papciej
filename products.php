@@ -35,7 +35,10 @@
                 $result = mysqli_query($base,$query);
         
                 while($row=mysqli_fetch_assoc($result)){
-                    echo '<form class="product" action="/oferta/" method="get">';
+                    echo '<form action="/oferta/" method="get">';
+                        echo "<input type='text' name='productID' value='{$row['ProduktID']}' readonly class='none'/>";
+                        echo '<button class="product">';
+
                         echo "<img src=\"images/{$row['ProduktID']}.png\" class='product-image' alt='{$row['NazwaProduktu']}'/>";
                         
                         echo "<div class='product-details'>";
@@ -44,9 +47,8 @@
                             echo "<p><strong>Kategoria:</strong> {$row['NazwaKategorii']}</p>";
                             echo "<p><strong>Producent:</strong> {$row['Producent']}</p>";
                             echo "<p><strong>Ilość w magazynie:</strong> {$row['IloscWMagazynie']}</p>";
-                            echo "<input type='text' name='productID' value='{$row['ProduktID']}' readonly class='none'/>";
-                            echo "<input type='submit' value='Zamów'/>";
                         echo "</div>";
+                        echo '</button>';
                     echo "</form>";
                 }
         

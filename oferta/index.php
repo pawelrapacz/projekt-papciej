@@ -97,7 +97,7 @@
 
                     while ($opinion = $opinions->fetch_object())
                     {
-                        echo '<section class="opinion">';
+                        echo '<section class="opinion-p">';
 
                         echo '<div class="info">'.$opinion->Imie.' '.$opinion->Nazwisko.'<span>'.$opinion->DataOpinii.'</span></div>';
                         

@@ -94,6 +94,11 @@ footer {
     background-color: #fff;
 }
 
+button.product {
+    width: 100%;
+    cursor: pointer;
+}
+
 .product-details, .opinion-details, .delivery-details {
     flex: 1;
     font-size: larger;
