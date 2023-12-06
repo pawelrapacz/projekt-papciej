@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Sklep TechNest</title>
-    <link href="style.css" rel="stylesheet"/>
+    <link href="/styles/technest-style.css" rel="stylesheet"/>
+    <link href="/style.css" rel="stylesheet"/>
 </head>
 
 <?php require_once 'connect.php'; ?>
@@ -25,18 +26,16 @@
     </nav>
 
     <section id="product-list">
-        <form action="add.php" method="POST">
             <?php
-                $query = "SELECT Produkty.ProduktID, NazwaProduktu, Cena, Opis, NazwaKategorii, Producent, IloscWMagazynie, AVG(Ocena) 
-                    FROM `Produkty`  
-                    INNER JOIN Opinie ON Opinie.ProduktID=Produkty.ProduktID
-                    INNER JOIN Kategorie ON Kategorie.KategoriaID=Produkty.KategoriaID 
-                    GROUP BY Produkty.ProduktID;";
+                $query = "SELECT Produkty.ProduktID, NazwaProduktu, Cena, Opis, NazwaKategorii, Producent, IloscWMagazynie
+                    FROM Produkty  
+                    INNER JOIN Kategorie ON Kategorie.KategoriaID=Produkty.KategoriaID
+                    WHERE IloscWMagazynie > 0";
         
                 $result = mysqli_query($base,$query);
         
                 while($row=mysqli_fetch_assoc($result)){
-                    echo "<section class='product'>";
+                    echo '<form class="product" action="/oferta/" method="get">';
                         echo "<img src=\"images/{$row['ProduktID']}.png\" class='product-image' alt='{$row['NazwaProduktu']}'/>";
                         
                         echo "<div class='product-details'>";
@@ -45,15 +44,14 @@
                             echo "<p><strong>Kategoria:</strong> {$row['NazwaKategorii']}</p>";
                             echo "<p><strong>Producent:</strong> {$row['Producent']}</p>";
                             echo "<p><strong>Ilość w magazynie:</strong> {$row['IloscWMagazynie']}</p>";
-                            echo "<p><strong>Średnia ocena:</strong> " . number_format($row['AVG(Ocena)'], 1) . "</p>";
-                            echo "<input type='submit' value='Zamów' name='{$row['NazwaProduktu']}'/>";
+                            echo "<input type='text' name='productID' value='{$row['ProduktID']}' readonly class='none'/>";
+                            echo "<input type='submit' value='Zamów'/>";
                         echo "</div>";
-                    echo "</section>";
+                    echo "</form>";
                 }
         
                 mysqli_close($base);
             ?>
-        </form>
     </section>
 
     <footer>
