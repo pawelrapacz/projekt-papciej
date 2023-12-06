@@ -13,17 +13,6 @@ header {
     padding: 10px;
 }
 
-h1 {
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    letter-spacing: 2px;
-    font-weight: bold;
-}
-
-h2 {
-    margin-top: 0;
-}
-
 header a {
     color: #fff;
     text-decoration: none;
@@ -42,6 +31,8 @@ nav a {
     margin: 0 15px;
     font-weight: bold;
 }
+  
+
 
 nav {
     background-color: #444;
@@ -50,21 +41,16 @@ nav {
     text-align: center;
 }
 
-article {
-    padding: 20px 20px 70px 20px;
-}
 
-form {
-    display: flex;
-    flex-wrap: wrap;
+
+article {
+    padding: 20px;
 }
 
 section {
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 15px;
-    width: 47%;
-    margin-right: 20px;
     margin-bottom: 20px;
     background-color: #fff;
 }
@@ -76,18 +62,17 @@ img {
     margin-bottom: 10px;
 }
 
-input[type="submit"] {
+input[type="button"] {
     background-color: #4CAF50;
     font-size: larger;
     color: white;
-    padding: 10px 10px;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: 20%;
 }
 
-input[type="submit"]:hover {
+input[type="button"]:hover {
     background-color: #45a049;
 }
 
@@ -96,9 +81,6 @@ footer {
     color: #fff;
     text-align: center;
     padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
 }
 
 .product, .opinion, .delivery{

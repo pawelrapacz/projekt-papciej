@@ -24,8 +24,8 @@
         <a href="contact.php">Kontakt</a>
     </nav>
 
-    <article id="product-list">
-        <form action="order.php" method="POST">
+    <section id="product-list">
+        <form action="add.php" method="POST">
             <?php
                 $query = "SELECT Produkty.ProduktID, NazwaProduktu, Cena, Opis, NazwaKategorii, Producent, IloscWMagazynie, AVG(Ocena) 
                     FROM `Produkty`  
@@ -54,8 +54,7 @@
                 mysqli_close($base);
             ?>
         </form>
-    </article>
-
+    </section>
 
     <footer>
         <p>&copy; 2023 TechNest. All rights reserved.</p>
