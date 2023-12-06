@@ -1,5 +1,5 @@
-@use 'base';
-@use 'components';
+@use 'base' as CommonBase;
+@use 'components' as CommonComponents;
 @use 'technest/layout';
 @use 'technest/components';
 @use 'technest/pages';
