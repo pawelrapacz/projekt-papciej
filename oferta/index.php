@@ -73,7 +73,7 @@
                         </div>
                     ';
 
-                    echo '<div class="options"><select class="quantity">';
+                    echo '<form method="post" action="/order.php" class="options"><select class="quantity">';
                     for ($i = 1; $i <= $productInStock && $i <=10; $i++)
                     {
                         if ($i === 1) echo '<option selected>'.$i.'</option>';
@@ -81,9 +81,9 @@
                     }
                     echo '</select>';
 
-                    echo '<button class="add-to-cart">Dodaj do koszyka</button></div>';
+                    echo '<button type="submit" name='.$productName.' class="add-to-cart">Dodaj do koszyka</button></div>';
 
-                    echo '</div>';
+                    echo '</form>';
                 ?>
             </div>
         </section>
