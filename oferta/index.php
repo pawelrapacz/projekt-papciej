@@ -9,10 +9,9 @@
 
     $db = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 
-    $product = $db->query('SELECT Produkty.*, Kategorie.NazwaKategorii, CAST( AVG(Opinie.Ocena) AS DECIMAL(2, 1) ) AS "SredniaOcena"
+    $product = $db->query('SELECT Produkty.*, Kategorie.NazwaKategorii
     FROM Produkty
     JOIN Kategorie ON Produkty.KategoriaID = Kategorie.KategoriaID
-    JOIN Opinie ON Opinie.ProduktID = Produkty.ProduktID
     WHERE Produkty.ProduktID = '.$_GET['productID'])->fetch_object();
 
     $productID = $product->ProduktID;
@@ -22,10 +21,10 @@
     $productProducer = $product->Producent;
     $productInStock = $product->IloscWMagazynie;
     $productCategory = $product->NazwaKategorii;
-    $productAvgRating = $product->SredniaOcena;
 
-    // print_r($product);
-
+    $productAvgRating = $db->query('SELECT CAST( AVG(Ocena) AS DECIMAL(3, 1) ) FROM Opinie WHERE ProduktID = '.$productID)->fetch_row()[0];
+    if (!$productAvgRating) 
+        $productAvgRating = 'Brak';
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -95,18 +94,22 @@
                     JOIN Klienci ON Opinie.KlientID = Klienci.KlientID
                     WHERE ProduktID = '.$productID);
 
-                    while ($opinion = $opinions->fetch_object())
+                    if ($opinions->num_rows)
                     {
-                        echo '<section class="opinion-p">';
+                        while ($opinion = $opinions->fetch_object())
+                        {
+                            echo '<section class="opinion-p">';
 
-                        echo '<div class="info">'.$opinion->Imie.' '.$opinion->Nazwisko.'<span>'.$opinion->DataOpinii.'</span></div>';
-                        
-                        echo '<div class="rating">Ocena: '.$opinion->Ocena.'</div>';
-                        
-                        echo '<div class="comment">'.$opinion->Komentarz.'</div>';
-                        
-                        echo '</section>';
+                            echo '<div class="info">'.$opinion->Imie.' '.$opinion->Nazwisko.'<span>'.$opinion->DataOpinii.'</span></div>';
+                            
+                            echo '<div class="rating">Ocena: '.$opinion->Ocena.'</div>';
+                            
+                            echo '<div class="comment">'.$opinion->Komentarz.'</div>';
+                            
+                            echo '</section>';
+                        }
                     }
+                    else echo 'Brak opinii'
 
             ?>
         </section>
