@@ -10,7 +10,7 @@
 <?php require_once 'connect.php'; ?>
 
 <body>
-    <header>
+<header>
         <a href="index.php">
             <h1>Sklep TechNest</h1>
         </a>
@@ -20,8 +20,8 @@
         <a href="products.php">Produkty</a>
         <a href="reviews.php">Opinie</a>
         <a href="delivery.php">Dostawcy</a>
-        <a href="about.php">O sklepie</a>
-        <a href="contact.php">Kontakt</a>
+        <a href="#">O sklepie</a>
+        <a href="#">Kontakt</a>
     </nav>
 
     <article id="product-list">

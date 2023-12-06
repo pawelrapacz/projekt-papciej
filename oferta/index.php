@@ -39,19 +39,20 @@
     ?>
 </head>
 <body>
-    <header>
-        <a href="index.php">
+<header>
+        <a href="../index.php">
             <h1>Sklep TechNest</h1>
         </a>
     </header>
 
     <nav>
-        <a href="/products.php">Produkty</a>
-        <a href="/reviews.php">Opinie</a>
-        <a href="/delivery.php">Dostawcy</a>
+        <a href="../products.php">Produkty</a>
+        <a href="../reviews.php">Opinie</a>
+        <a href="../delivery.php">Dostawcy</a>
         <a href="#">O sklepie</a>
         <a href="#">Kontakt</a>
     </nav>
+
     <main class="product-page"> 
         <section class="offer">
             <?php echo '<img src="/images/'.$productID.'.png" alt="Zdjęcie pogladowe">'; ?>
