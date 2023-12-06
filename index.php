@@ -26,7 +26,7 @@
         <section id="">
             Test
         </section>
-    <article>
+    </article>
 
 
     <footer>

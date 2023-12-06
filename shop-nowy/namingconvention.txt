@@ -1,9 +1,0 @@
-UPPER_CASE - constants
-
-camelCase - variables (js const objects/arrays), functions
-
-PascalCase - js/php classes, constructors
-
-snake_case - js classes for html elements
-
-kebab-case - css/html classes and ids
