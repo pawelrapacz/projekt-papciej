@@ -25,34 +25,38 @@
     </nav>
 
     <article>
-        <section id="">
-            <form action="add.php" method="POST">
-                <?php
-                    $query = "SELECT Produkty.ProduktID, NazwaProduktu, Cena, Opis, NazwaKategorii, Producent, IloscWMagazynie, AVG(Ocena) FROM `Produkty`  
-                    INNER JOIN Opinie ON Opinie.ProduktID=Produkty.ProduktID
-                    INNER JOIN Kategorie ON Kategorie.KategoriaID=Produkty.KategoriaID GROUP BY Produkty.ProduktID;";
-        
-                    $result = mysqli_query($base,$query);
-        
-                    while($row=mysqli_fetch_row($result)){
-                        
-                        echo "<section>";
+    <section id="product-list">
+    <form action="add.php" method="POST">
+        <?php
+            $query = "SELECT Produkty.ProduktID, NazwaProduktu, Cena, Opis, NazwaKategorii, Producent, IloscWMagazynie, AVG(Ocena) 
+                FROM `Produkty`  
+                INNER JOIN Opinie ON Opinie.ProduktID=Produkty.ProduktID
+                INNER JOIN Kategorie ON Kategorie.KategoriaID=Produkty.KategoriaID 
+                GROUP BY Produkty.ProduktID;";
+    
+            $result = mysqli_query($base,$query);
+    
+            while($row=mysqli_fetch_assoc($result)){
+                echo "<section class='product'>";
+                    echo "<img src=\"images/{$row['ProduktID']}.png\" class='product-image' alt='{$row['NazwaProduktu']}'/>";
+                    
+                    echo "<div class='product-details'>";
+                        echo "<h2>{$row['NazwaProduktu']}</h2>";
+                        echo "<p><strong>Cena:</strong> {$row['Cena']} zł</p>";
+                        echo "<p><strong>Kategoria:</strong> {$row['NazwaKategorii']}</p>";
+                        echo "<p><strong>Producent:</strong> {$row['Producent']}</p>";
+                        echo "<p><strong>Ilość w magazynie:</strong> {$row['IloscWMagazynie']}</p>";
+                        echo "<p><strong>Średnia ocena:</strong> " . number_format($row['AVG(Ocena)'], 1) . "</p>";
+                        echo "<input type='button' value='Zamów' name='asd'/>";
+                    echo "</div>";
+                echo "</section>";
+            }
+    
+            mysqli_close($base);
+        ?>
+    </form>
+</section>
 
-                        echo "<img src=\"images\\$row[0].png\"/>";
-                        
-                        foreach($row as $cell){
-                            echo $cell."<br/>";
-                        }                    
-
-                        echo "<input type=\"button\" value=\"Zamów\" name=\"asd\"/>";
-
-                        echo "</section>";
-                    }
-        
-                    mysqli_close($base);
-                ?>
-            </form>
-        </section>
     <article>
 
 
