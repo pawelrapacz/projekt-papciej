@@ -40,7 +40,7 @@
                         echo "<input type='text' name='productID' value='{$row['ProduktID']}' readonly class='none'/>";
                         echo '<button class="product">';
 
-                        echo "<img src=\"images/{$row['ProduktID']}.png\" class='product-image' alt='{$row['NazwaProduktu']}'/>";
+                        echo "<img src=\"/img/products/{$row['ProduktID']}.png\" class='product-image' alt='{$row['NazwaProduktu']}'/>";
                         
                         echo "<div class='product-details'>";
                             echo "<h2>{$row['NazwaProduktu']}</h2>";

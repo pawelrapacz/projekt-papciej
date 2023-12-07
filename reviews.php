@@ -41,7 +41,7 @@
             while ($row = mysqli_fetch_assoc($result)) {
                 
                 echo "<section class='opinion'>";
-                    echo "<img src=\"images/{$row['ProduktID']}.png\" class='product-image' alt='{$row['NazwaProduktu']}'/>";
+                    echo "<img src=\"/img/products/{$row['ProduktID']}.png\" class='product-image' alt='{$row['NazwaProduktu']}'/>";
                     echo "<div class='opinion-details'>";
                         echo "<h2>{$row['NazwaProduktu']}</h2>";
                         echo "<p><strong>Imię i Nazwisko:</strong> {$row['Imie']} {$row['Nazwisko']}</p>";

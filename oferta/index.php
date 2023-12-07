@@ -54,7 +54,7 @@
 
     <main class="product-page"> 
         <section class="offer">
-            <?php echo '<img src="/images/'.$productID.'.png" alt="Zdjęcie pogladowe">'; ?>
+            <?php echo '<img src="/img/products/'.$productID.'.png" alt="Zdjęcie pogladowe">'; ?>
             <div class="product-info">
                 <?php
                     echo '<h2 class="name">'.$productName.'</h2>';
