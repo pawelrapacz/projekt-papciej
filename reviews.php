@@ -16,13 +16,13 @@
 
 <body>
 <header>
-        <a href="index.php">
+        <a href="/">
             <h1>Sklep TechNest</h1>
         </a>
     </header>
 
     <nav>
-        <a href="products.php">Produkty</a>
+        <a href="/">Produkty</a>
         <a href="reviews.php">Opinie</a>
         <a href="delivery.php">Dostawcy</a>
         <a href="#">O sklepie</a>
