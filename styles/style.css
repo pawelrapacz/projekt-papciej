@@ -92,10 +92,10 @@ footer {
     padding: 15px;
     margin-bottom: 20px;
     background-color: #fff;
+    width: 100%;
 }
 
 button.product {
-    width: 100%;
     cursor: pointer;
 }
 
