@@ -18,6 +18,7 @@ $button-border-radius: .5rem;
 //    max-width: 30rem
 
 .sidebar {
+    z-index: 100;
     width: $sidebar-width-collapsed;
     height: 100vh;
     position: fixed;
