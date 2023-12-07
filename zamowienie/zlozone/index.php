@@ -50,18 +50,12 @@
                     $result = mysqli_query($base,$query);
                     $zamowienieId = mysqli_fetch_assoc($result)["AUTO_INCREMENT"];
 
-                    $query = "INSERT INTO Zamowienia VALUES (
+                    $query = "INSERT INTO Zamowienia (ZamowienieID, KlientID, StanZamowienia, SpedytorID)  VALUES (
                         $zamowienieId,
                         $klientId,
-                        \"".date('Y-m-d H:i:s')."\",
                         \"W trakcie realizacji\",
-                        ".$_POST["spedytor"].",
-                        NULL,
-                        NULL,
-                        ".rand(1000000000,9999999999).",
-                        0,
-                        NULL
-                    );";
+                        ".$_POST["spedytor"]."
+                        );";
                     mysqli_query($base,$query);
 
                 }
