@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Sklep TechNest</title>
-    <link href="style.css" rel="stylesheet"/>
-    <link href="order_styl.css" rel="stylesheet"/>
+    <link href="styles/style.css" rel="stylesheet"/>
+    <link href="styles/order_styl.css" rel="stylesheet"/>
     
     <?php require_once 'connect.php'; ?>
 

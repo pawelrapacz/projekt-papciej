@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Sklep TechNest</title>
     <link href="/styles/technest-style.css" rel="stylesheet"/>
-    <link href="/style.css" rel="stylesheet"/>
+    <link href="styles/style.css" rel="stylesheet"/>
 </head>
 
 <?php require_once 'connect.php'; ?>
