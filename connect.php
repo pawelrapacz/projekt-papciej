@@ -1,4 +1,4 @@
-<?php
+<?php 
 
     const DB_SERVER = 'localhost';
     const DB_NAME = 'TechNest';
