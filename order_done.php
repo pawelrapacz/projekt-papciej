@@ -30,6 +30,7 @@
         <section>
             <?php
                 if(isset($_POST["next"])){
+                    $base = mysqli_connect(DB_SERVER,DB_USER,DB_PASSWORD,DB_NAME);
                     $query = 'SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = "TechNest" AND TABLE_NAME = "Klienci";';
                     $result = mysqli_query($base,$query);
                     $klientId = mysqli_fetch_assoc($result)["AUTO_INCREMENT"];

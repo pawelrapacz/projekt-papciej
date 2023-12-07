@@ -27,6 +27,7 @@
 
     <section id="product-list">
             <?php
+                $base = mysqli_connect(DB_SERVER,DB_USER,DB_PASSWORD,DB_NAME);
                 $query = "SELECT Produkty.ProduktID, NazwaProduktu, Cena, Opis, NazwaKategorii, Producent, IloscWMagazynie
                     FROM Produkty  
                     INNER JOIN Kategorie ON Kategorie.KategoriaID=Produkty.KategoriaID

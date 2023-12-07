@@ -31,6 +31,7 @@
 
     <article>
         <?php
+            $base = mysqli_connect(DB_SERVER,DB_USER,DB_PASSWORD,DB_NAME);
             $query = "SELECT Produkty.ProduktID, NazwaProduktu, Imie, Nazwisko, Ocena, Komentarz, DataOpinii FROM Opinie 
             INNER JOIN Produkty ON Opinie.ProduktID=Produkty.ProduktID
             INNER JOIN Klienci ON Klienci.KlientID=Opinie.KlientID;";
