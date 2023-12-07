@@ -37,7 +37,7 @@
         
                 while($row=mysqli_fetch_assoc($result)){
                     echo '<form action="/oferta/" method="get">';
-                        echo "<input type='text' name='productID' value='{$row['ProduktID']}' readonly class='none'/>";
+                        echo "<input type='text' name='productID' loading=\"lazy\" value='{$row['ProduktID']}' readonly class='none'/>";
                         echo '<button class="product">';
 
                         echo "<img src=\"/img/products/{$row['ProduktID']}.png\" class='product-image' alt='{$row['NazwaProduktu']}'/>";

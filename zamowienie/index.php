@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Sklep TechNest</title>
+    <link href="/styles/technest-style.css" rel="stylesheet"/>
     <link href="/styles/style.css" rel="stylesheet"/>
     <link href="/styles/order_styl.css" rel="stylesheet"/>
     
@@ -30,7 +31,11 @@
         <section>
             <form action="/zamowienie/zlozone/" method="POST">
                 <h2>Zamówienie:
-                    <?php echo str_replace('_',' ',array_keys($_POST)[0]); ?>
+                    <?php
+                        echo str_replace('_',' ',array_keys($_POST)[0]);
+                        echo '<input type="text" class="none" name="ilosc" value="'.$_POST['ilosc'].'">';
+                        echo '<input type="text" class="none" name="produkt" value="'.$_POST['produkt'].'">';
+                    ?>
                 </h2>
                 <h3>Podaj dane do zamówienia</h3>
                 <input type="text" name="imie" placeholder="Imie"/>
@@ -40,7 +45,7 @@
                 <input type="text" name="telefon" placeholder="Numer Telefonu"/>
                 <input type="text" name="kraj" placeholder="Kraj"/>
 
-                <input type="number" name="ilosc" placeholder="Ilość produktu"/>
+                <!-- <input type="number" name="ilosc" placeholder="Ilość produktu"/> -->
                 <select name="spedytor">
                     <option selected="true" disabled value="0">Dostawca</option>
                     <option value="1">DPD Polska</option>
