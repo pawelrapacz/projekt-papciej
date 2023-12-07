@@ -45,9 +45,9 @@
     </header>
 
     <nav>
-        <a href="../">Produkty</a>
-        <a href="../reviews.php">Opinie</a>
-        <a href="../delivery.php">Dostawcy</a>
+        <a href="/">Produkty</a>
+        <a href="/opinie/">Opinie</a>
+        <a href="/dostawcy/">Dostawcy</a>
         <a href="#">O sklepie</a>
         <a href="#">Kontakt</a>
     </nav>
@@ -72,7 +72,7 @@
                         </div>
                     ';
 
-                    echo '<form method="post" action="/order.php" class="options"><select class="quantity">';
+                    echo '<form method="post" action="/zamowienie/" class="options"><select class="quantity">';
                     for ($i = 1; $i <= $productInStock && $i <=10; $i++)
                     {
                         if ($i === 1) echo '<option selected>'.$i.'</option>';

@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Sklep TechNest</title>
-    <link href="styles/style.css" rel="stylesheet"/>
-    <link href="styles/order_styl.css" rel="stylesheet"/>
+    <link href="/styles/style.css" rel="stylesheet"/>
+    <link href="/styles/order_styl.css" rel="stylesheet"/>
     
-    <?php require_once 'connect.php'; ?>
+    <?php require_once $_SERVER['DOCUMENT_ROOT'].'/connect.php'; ?>
 
 </head>
 
@@ -20,10 +20,10 @@
 
     <nav>
         <a href="/">Produkty</a>
-        <a href="reviews.php">Opinie</a>
-        <a href="delivery.php">Dostawcy</a>
-        <a href="about.php">O sklepie</a>
-        <a href="contact.php">Kontakt</a>
+        <a href="/opinie/">Opinie</a>
+        <a href="/dostawcy/">Dostawcy</a>
+        <a href="#">O sklepie</a>
+        <a href="#">Kontakt</a>
     </nav>
 
     <article>

@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Sklep TechNest</title>
-    <link href="styles/style.css" rel="stylesheet"/>
-    <link href="styles/order_styl.css" rel="stylesheet"/>
+    <link href="/styles/style.css" rel="stylesheet"/>
+    <link href="/styles/order_styl.css" rel="stylesheet"/>
     
-    <?php require_once 'connect.php'; ?>
+    <?php require_once $_SERVER['DOCUMENT_ROOT'].'/connect.php'; ?>
 
 </head>
 
@@ -20,15 +20,15 @@
 
     <nav>
         <a href="/">Produkty</a>
-        <a href="reviews.php">Opinie</a>
-        <a href="delivery.php">Dostawcy</a>
+        <a href="/opinie/">Opinie</a>
+        <a href="/dostawcy/">Dostawcy</a>
         <a href="about.php">O sklepie</a>
         <a href="contact.php">Kontakt</a>
     </nav>
 
     <article>
         <section>
-            <form action="order_done.php" method="POST">
+            <form action="/zamowienie/zlozone/" method="POST">
                 <h2>Zamówienie:
                     <?php echo str_replace('_',' ',array_keys($_POST)[0]); ?>
                 </h2>
