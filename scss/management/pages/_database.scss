@@ -5,6 +5,7 @@ $clr-row-border: #8a8a8a;
 $row-border-width: 1px;
 
 .table {
+    isolation: isolate;
     background-color: variables.$bg-solid;
     color: variables.$txt-clr;
     width: 100%;
