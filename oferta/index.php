@@ -72,7 +72,7 @@
                         </div>
                     ';
 
-                    echo '<form method="post" action="/zamowienie/" class="options"><select class="quantity">';
+                    echo '<form method="post" action="/zamowienie/" class="options"><select class="quantity" name="ilosc">';
                     for ($i = 1; $i <= $productInStock && $i <=10; $i++)
                     {
                         if ($i === 1) echo '<option selected>'.$i.'</option>';
@@ -80,6 +80,7 @@
                     }
                     echo '</select>';
 
+                    echo '<input type="text" class="none" name="produkt" value="'.$productID.'">';
                     echo '<button type="submit" name='.$productName.' class="add-to-cart">Dodaj do koszyka</button></div>';
 
                     echo '</form>';
